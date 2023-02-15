@@ -7,12 +7,12 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestNameNotBlank(t *testing.T) {
+func TestNegativCustomer(t *testing.T) {
 	g := NewGomegaWithT(t)
 	Customer := Customer{
-		Name:       "", // ต้องไม่เป็นค่าว่าง
+		Name:       "sudaret",
 		Email:      "sudarat@gmail.com",
-		CustomerID: "Mserwtyd",
+		CustomerID: "M12469", // รหัสลูกค้าขึ้นต้นด้วย L หรือ M หรือ H แล้วตามด้วยตัวเลขจํานวน 7 ตัว
 	}
 
 	// ตรวจสอบด้วย govalidator
@@ -25,5 +25,5 @@ func TestNameNotBlank(t *testing.T) {
 	g.Expect(err).ToNot(BeNil())
 
 	// err.Error ต้องมี error message แสดงออกมา
-	g.Expect(err.Error()).To(Equal("Name not blank"))
+	g.Expect(err.Error()).To(Equal("CustomerID not ture"))
 }
